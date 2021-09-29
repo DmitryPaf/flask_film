@@ -16,6 +16,7 @@ flask-restful = "*"
 marshmallow-sqlalchemy = "*"
 flask-debugtoolbar = "*"
 pyjwt = "*"
+pycodestyle = "*"
 
 [requires]
 python_version = "3.7"
