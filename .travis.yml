@@ -1,5 +1,4 @@
 language: python
-
 python:
   - "3.9"
 before_install:
@@ -10,6 +9,6 @@ install:
   - pipenv install --dev
 
 script:
-  - pytest
+  - python -m pytest tests/
   - coverage run --source="src/" -m pytest
   - pycodestyle src/ --ignore=E722,E501,E402
