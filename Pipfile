@@ -4,17 +4,18 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+coverage = "*"
 
 [packages]
-flask-restful = "*"
+flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-swagger-ui = "*"
+flask-restful = "*"
 marshmallow-sqlalchemy = "*"
+flask-debugtoolbar = "*"
 pyjwt = "*"
-alembic = "*"
-pytest = "*"
-coverage = "*"
 
 [requires]
 python_version = "3.7"

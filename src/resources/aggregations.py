@@ -14,9 +14,8 @@ class AggregationApi(Resource):
 		sum_rating = db.session.query(func.sum(Film.rating)).scalar()
 		return {
 			'count': films_count,
-			'max_rating': max_rating,
-			'min_rating': min_rating,
-			'avg_rating': avg_rating,
-			'sum_rating': sum_rating
-			
+			'max': max_rating,
+			'min': min_rating,
+			'avg': avg_rating,
+			'sum': sum_rating
 		}

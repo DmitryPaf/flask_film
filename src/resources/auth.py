@@ -1,8 +1,9 @@
+import datetime
 from functools import wraps
 
-import jwt, datetime
-from flask_restful import Resource
+import jwt
 from flask import request, jsonify
+from flask_restful import Resource
 from marshmallow import ValidationError
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash
@@ -25,7 +26,7 @@ class AuthRegister(Resource):
 			db.session.commit()
 		except IntegrityError:
 			db.session.rollback()
-			return {"message": "Such user exist"}, 409
+			return {"message": "Such user exists"}, 409
 		return self.user_schema.dump(user), 201
 
 
@@ -41,12 +42,11 @@ class AuthLogin(Resource):
 			{
 				"user_id": user.uuid,
 				"exp": datetime.datetime.now() + datetime.timedelta(hours=1)
-				
-			}, app.config["SECRET_KEY"]
+			}, app.config['SECRET_KEY']
 		)
 		return jsonify(
 			{
-				'token': token
+				"token": token.decode('utf-8')
 			}
 		)
 
@@ -54,7 +54,7 @@ class AuthLogin(Resource):
 def token_required(func):
 	@wraps(func)
 	def wrapper(self, *args, **kwargs):
-		token = request.headers.get('X-API-KEY', "")
+		token = request.headers.get('X-API-KEY', '')
 		if not token:
 			return "", 401, {"WWW-Authenticate": "Basic realm='Authentication required'"}
 		try:
