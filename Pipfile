@@ -16,6 +16,8 @@ flask-restful = "*"
 marshmallow-sqlalchemy = "*"
 flask-debugtoolbar = "*"
 pyjwt = "*"
+gunicorn = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
